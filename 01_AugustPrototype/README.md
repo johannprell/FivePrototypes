@@ -25,7 +25,7 @@ Guns, guitars and synths.
 
 ## Core mechanics & features ##
 - *Domination meter*: inspired by the Internalisation meter on the *IdleThumbs* twitch. Goes up whenever player hits something, goes down whenever player misses.
-Player dies when meter is empty. Player wins if meter is filled to max. While meter is filling, simple upgrades might be unlocked, or weapons just get stronger. Music has at least two stems that are mixed achording to Domination meter.
+Player dies when meter is empty. Player wins if meter is filled to max. While meter is filling, simple upgrades might be unlocked, or weapons just get stronger. Music has at least two stems that are mixed according to Domination meter.
 - *Player*: WASD movement, mouse aim and fire. 
 - *Enemies*: super dumb zombie enemies that follow player - Unity NavMesh based "AI". Shoot/puke/something at player. Get faster as domination meter rises.
 - *Environment*: simplest possible procedural level, obstacles are placed in otherwise very open wasteland. Enemy spawn points, spawn rate increases with Domination meter.
