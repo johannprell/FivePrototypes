@@ -3,7 +3,7 @@
 I'm cheating and starting early on this one - setting up repo and project on Monday July 24th 20017.
 
 ## Dev Environment ##
-Unity 2D 2017.1
+Unity 3D 2017.1
 C#
 
 # GDD #
