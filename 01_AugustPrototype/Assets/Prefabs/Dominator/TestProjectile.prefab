@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _force: 30
   _damage: 3
-  _lifeTime: 5
+  _lifeTime: 2
   _impactObject: {fileID: 1696594870699936, guid: 6a093b49d36d84aba9f7810dfa83d760,
     type: 2}
   _enemyHit: 0

@@ -24,7 +24,7 @@ namespace Domination
 		void Start() 
 		{
 			_body = GetComponent<Rigidbody>();
-			Invoke("Remove", _lifeTime);
+			Invoke("SelfDestruct", _lifeTime);
 
 			Launch();
 		}
@@ -44,6 +44,7 @@ namespace Domination
 					Impact();
 					break;
 				case "Obstacle":
+					_enemyHit = false;
 					Impact();
 					break;
 				default:
@@ -58,6 +59,12 @@ namespace Domination
 			_body.AddForce(transform.forward * updatedForce, ForceMode.Impulse);
 		} 
 
+		private void SelfDestruct()
+		{
+			_enemyHit = false;
+			Impact();
+		}
+
 		private void Remove()
 		{
 			Destroy(gameObject); //TODO pooling
@@ -68,8 +75,10 @@ namespace Domination
 			switch(_enemyHit) //TODO domination meter logic
 			{
 				case true:
+					DominationMeter.instance.ApplyHitReward();
 					break;
 				case false:
+					DominationMeter.instance.ApplyMissPunishment();
 					break;
 			}
 			Instantiate(_impactObject, transform.position, transform.rotation); //TODO le pooling

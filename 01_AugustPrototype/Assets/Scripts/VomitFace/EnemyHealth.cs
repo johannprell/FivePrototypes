@@ -13,6 +13,8 @@ namespace Domination
 		private float _currentHealth;
 		[SerializeField]
 		private GameObject _deathPresentationPrefab;
+		[SerializeField]
+		private float _deathPoints = 0.01f;
 		
 		/* --- UNITY METHODS --- */
 		void Start() 
@@ -43,7 +45,7 @@ namespace Domination
 		private void Death()
 		{
 			//Raise domination meter
-
+			DominationMeter.instance.ApplyEnemyKill(_deathPoints);
 			//I present to you: Death
 			Instantiate(_deathPresentationPrefab, transform.position, transform.rotation); //TODO pooling also this
 			//Done
