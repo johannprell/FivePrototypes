@@ -11,7 +11,7 @@ I was thinking about keeping the first of these project at a super small scale i
 
 ## Title and theme: DOMINATION ##
 I have been playing alot of over-the-top action games with RogueLike elements lately - the likes of *Nuclear Throne*, *Enter the Gungeon*, *BroForce*, etc.
-The theme of domination stems from the skill-based mastery that makes these games fun (well, BroForce might be more mayhem than skill in many cases, but still fun). One might argue that this is on the far side of the masculine spectrum of fun & entertainment, in the sense mentioned by Jesse Schell in *Art of Game Design*, and Brett Leonard, the director of *Lawn Mower Man*, in his very interesting interview on *Voices of VR*: http://voicesofvr.com/406-building-storyworlds-with-lawnmower-mans-brett-leonard/.
+The theme of domination stems from the skill-based mastery that makes these games fun (well, BroForce might be more mayhem than skill in many cases, but still fun). One might argue that this is on the far side of the masculine spectrum of fun & entertainment, in the sense mentioned by Jesse Schell in *Art of Game Design*, and Brett Leonard, the director of *Lawn Mower Man*, in his very interesting interview on *Voices of VR*: http://voicesofvr.com/406-building-storyworlds-with-lawnmower-mans-brett-leonard/. This might be interesting to flip on it's head somehow.
 Also, I have this kind of itch to make a little game that is just super intense and metal all the time, that 14 year old me would love, so I'll just go all in on this one and get it out of my system. Hopefully.
 
 ## Genre ##
