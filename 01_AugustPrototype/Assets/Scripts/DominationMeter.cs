@@ -19,9 +19,11 @@ namespace Domination
 		[SerializeField]
 		private float _dominantThreshold = .666f;
 		[SerializeField]
-		private float _hitReward = 0.001f;
+		[Range(0f, 0.05f)]
+		private float _hitReward = 0.01f;
 		[SerializeField]
-		private float _missPunishment = 0.33f;
+		[Range(0f, 0.05f)]
+		private float _missPunishment = 0.01f;
 		[Header("UI")]
 		[SerializeField]
 		private Slider _meterUI;
@@ -130,7 +132,7 @@ namespace Domination
 		public void ApplyMissPunishment()
 		{
 			float punishment = (_missPunishment * CurrentValue);
-			punishment = Mathf.Clamp(punishment, 0.005f, 0.666f);
+			punishment = Mathf.Clamp(punishment, 0.0333f, 0.666f);
 			ApplyValue(-punishment);
 		}
 

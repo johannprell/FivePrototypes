@@ -34,6 +34,7 @@ namespace Domination
 		private DominatorCombat _dominatorCombat;
 		
 		[Header("Dodge")]
+		private KeyCode _dodgeButton = KeyCode.Mouse1;
 		[SerializeField]
 		private float _dodgeDuration = 0.6f;
 		[SerializeField]
@@ -119,12 +120,12 @@ namespace Domination
 		/* --- CUSTOM METHODS --- */
 		private bool CheckDodgeInput()
 		{
-			bool result = Input.GetButtonDown("Jump");
+			bool result = Input.GetKeyDown(_dodgeButton);
 			if(result)
 			{
 				return result;
 			}
-			if(Input.GetButton("Jump") && MovementState != DominatorMovementState.Dodge)
+			if(Input.GetKey(_dodgeButton) && MovementState != DominatorMovementState.Dodge)
 			{
 				result = true;
 			}

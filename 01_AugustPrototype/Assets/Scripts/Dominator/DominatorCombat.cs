@@ -19,6 +19,7 @@ namespace Domination
 		[SerializeField]
 		private DominatorWeapon _equippedWeapon;
 		
+		
 		/* --- UNITY METHODS --- */
 		void Awake() 
 		{
