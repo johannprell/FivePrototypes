@@ -59,8 +59,11 @@ namespace Domination
 		[SerializeField]
 		private GameObject _instructions;
 		[SerializeField]
-		private float _instructionsDuration = 3f;
-
+		private GameObject _instructions_Move;
+		[SerializeField]
+		private GameObject _instructions_Shoot;
+		[SerializeField]
+		private GameObject _instructions_Dominate;
 		[Header("Audio")]
 		public AudioClip CrunchClip;
 		[Range(0f, 1f)]
@@ -80,7 +83,7 @@ namespace Domination
 			//Initiate stuff we'll need later
 			_isPromptVisible = false;
 			_promptText.text = "";
-			_instructions.SetActive(false);
+			HideAllInstructions();
 			_info01.enabled = false;
 			_info02.enabled = false;
 			MusicSource.playOnAwake = false;
@@ -161,7 +164,10 @@ namespace Domination
 
 		private IEnumerator StartGameSequence()
 		{
+			//Hide stuff
 			_logoParent.SetActive(false);
+			_info01.enabled = false;
+			_info02.enabled = false;
 			//Handle audio
 			MusicSource.Stop();
 			MusicSource.volume = ShtapVolume;
@@ -170,16 +176,49 @@ namespace Domination
 			MusicSource.Play();
 			//Show intstructions and begin countdown
 			_instructions.SetActive(true);
+			//No countdown digits?
+			_promptText.text = "";
 			int countdown = 3;
 			while(countdown > 0)
 			{
-				_promptText.text = countdown.ToString();
+				//_promptText.text = countdown.ToString();
+				ShowInstructions(countdown);
 				yield return new WaitForSeconds(1f);
 				countdown--;
 			}
-
+			//Hide instructions
+			_instructions.SetActive(false);
+			//Go to game
 			SceneManager.LoadScene(1);
 			StopCoroutine(StartGameSequence());
+		}
+
+		private void HideAllInstructions()
+		{
+			_instructions.SetActive(false);
+			_instructions_Move.SetActive(false);
+			_instructions_Shoot.SetActive(false);
+			_instructions_Dominate.SetActive(false);
+		}
+
+		private void ShowInstructions(int currentCountdown)
+		{
+			switch (currentCountdown)
+			{
+				case 3:
+					_instructions_Move.SetActive(true);
+					break;
+				case 2:
+					_instructions_Move.SetActive(false);
+					_instructions_Shoot.SetActive(true);
+					break;
+				case 1:
+					_instructions_Shoot.SetActive(false);
+					_instructions_Dominate.SetActive(true);
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }
