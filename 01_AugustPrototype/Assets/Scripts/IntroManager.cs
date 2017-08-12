@@ -125,7 +125,7 @@ namespace Domination
 				_colorSwitcher.Iterate();
 				MusicSource.Play();
 			}
-			yield return new WaitForSeconds(_logoRevealInterval * 1.6f); //Extra pause before impact
+			yield return new WaitForSeconds(_logoRevealInterval * 4f); //Extra pause before impact
 			//Show info text
 			_info01.enabled = true;
 			_info02.enabled = true;

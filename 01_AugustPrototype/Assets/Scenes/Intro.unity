@@ -1758,7 +1758,7 @@ MonoBehaviour:
   _logoTion: {fileID: 1475345434}
   _logoScaleMin: 1
   _logoScaleMax: 1.85
-  _logoRevealInterval: 0.5
+  _logoRevealInterval: 0.6
   _promptText: {fileID: 102385929}
   _promptCopy: PRESS ANY KEY TO START
   _info01: {fileID: 1774622339}
@@ -1767,7 +1767,7 @@ MonoBehaviour:
   _logoAnimator: {fileID: 322151167}
   _instructions: {fileID: 2124638463}
   _instructionsDuration: 3
-  CrunchClip: {fileID: 8300000, guid: 4771e6b905c964d33befb9f39d70ac80, type: 3}
+  CrunchClip: {fileID: 8300000, guid: bb77454fa2443492c829d785c9e9cd10, type: 3}
   CrunchVolume: 0.8
   RiffClip: {fileID: 8300000, guid: f3fb44f7062ff444b81ec65cdfeaf49f, type: 3}
   RiffVolume: 1
