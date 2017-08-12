@@ -1102,16 +1102,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114050862077557894, guid: 7083ef117fdf0414185615c6fd49b2df,
-        type: 2}
-      propertyPath: _lifeTime
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050862077557894, guid: 7083ef117fdf0414185615c6fd49b2df,
-        type: 2}
-      propertyPath: _force
-      value: 35
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7083ef117fdf0414185615c6fd49b2df, type: 2}
   m_IsPrefabParent: 0
@@ -1182,11 +1172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementState: 0
-  _speed: 7
+  _speed: 12
   _aimVectorY: 0
   _dominatorCombat: {fileID: 418619650}
   _dodgeDuration: 0.25
-  _dodgeSpeed: 24
+  _dodgeSpeed: 32
   _dominatorPresentation: {fileID: 722260761}
   _dodgingPresentation: {fileID: 250691130}
   _combatArmPresentation: {fileID: 424540975}
@@ -2629,13 +2619,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1487291225}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 16, z: -16}
+  m_LocalRotation: {x: 0.2840153, y: 0, z: 0, w: 0.95881975}
+  m_LocalPosition: {x: 0, y: 10.6, z: -16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 33, y: 0, z: 0}
 --- !u!114 &1487291231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2649,6 +2639,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 418619649}
   _smoothing: 5
+  _rotateLeftKey: 113
+  _rotateRightKey: 101
 --- !u!4 &1489815743 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4796541318493990, guid: 66a8d9414dc3f44aca02f2c4f56abec9,

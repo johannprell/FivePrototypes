@@ -121,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba5b0a91ccac4aab8f7a992b8c0bde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _force: 30
+  _force: 66
   _damage: 3
-  _lifeTime: 2
+  _lifeTime: 0.6
   _impactObject: {fileID: 1696594870699936, guid: 6a093b49d36d84aba9f7810dfa83d760,
     type: 2}
   _enemyHit: 0
