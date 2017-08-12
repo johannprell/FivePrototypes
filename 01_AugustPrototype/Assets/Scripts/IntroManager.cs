@@ -41,9 +41,19 @@ namespace Domination
 
 		private bool _isPromptVisible;
 
+		[Header("InfoText")]
+		[SerializeField]
+		private Text _info01;
+		[SerializeField]
+		private Text _info02;
+
 		[Header("Logo colors")]
 		[SerializeField]
 		private MaterialColorSwitcher _colorSwitcher;
+
+		[Header("Logo animator")]
+		[SerializeField]
+		private Animator _logoAnimator;
 
 		[Header("Instructions")]
 		[SerializeField]
@@ -71,6 +81,8 @@ namespace Domination
 			_isPromptVisible = false;
 			_promptText.text = "";
 			_instructions.SetActive(false);
+			_info01.enabled = false;
+			_info02.enabled = false;
 			MusicSource.playOnAwake = false;
 			//Make sure logo parent is active
 			_logoParent.SetActive(true);
@@ -110,16 +122,21 @@ namespace Domination
 				yield return new WaitForSeconds(_logoRevealInterval);
 				part.SetActive(true);
 				//Switch color once
-				_colorSwitcher.OneShot();
+				_colorSwitcher.Iterate();
 				MusicSource.Play();
 			}
 			yield return new WaitForSeconds(_logoRevealInterval * 1.6f); //Extra pause before impact
+			//Show info text
+			_info01.enabled = true;
+			_info02.enabled = true;
 			//Prepare audio
 			MusicSource.volume = RiffVolume;
 			MusicSource.clip = RiffClip;
 			MusicSource.loop = true;
 			//Scale up logo
 			_logoParent.transform.localScale = new Vector3(_logoScaleMax, _logoScaleMax, _logoScaleMax);
+			//Start twirling
+			_logoAnimator.SetBool("DoTwirl", true);
 			//Start autoswitching
 			_colorSwitcher.Activate();
 			//Play Riff

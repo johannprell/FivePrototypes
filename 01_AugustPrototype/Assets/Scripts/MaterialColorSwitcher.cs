@@ -19,10 +19,11 @@ namespace Domination
 		[SerializeField]
 		private bool _isActive;
 
+		private int _currentIteration;
 		/* --- UNITY METHODS --- */
 		void Start() 
 		{
-			
+			_currentIteration = 0;
 		}
 		
 		void Update() 
@@ -34,6 +35,19 @@ namespace Domination
 		public void OneShot()
 		{
 			_material.color = _colors[Random.Range(0, _colors.Count)];
+		}
+
+		public void Iterate()
+		{
+			if(_currentIteration < _colors.Count)
+			{
+				_currentIteration++;
+			}
+			else
+			{
+				_currentIteration = 0;
+			}
+			_material.color = _colors[_currentIteration];
 		}
 
 		public void Activate()
