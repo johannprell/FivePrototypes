@@ -129,9 +129,9 @@ namespace Domination
 				MusicSource.Play();
 			}
 			yield return new WaitForSeconds(_logoRevealInterval * 4f); //Extra pause before impact
-			//Show info text
-			_info01.enabled = true;
-			_info02.enabled = true;
+			//Show info text EDIT cleaner without?
+			//_info01.enabled = true;
+			//_info02.enabled = true;
 			//Prepare audio
 			MusicSource.volume = RiffVolume;
 			MusicSource.clip = RiffClip;

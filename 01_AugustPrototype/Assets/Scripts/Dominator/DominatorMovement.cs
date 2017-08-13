@@ -49,6 +49,14 @@ namespace Domination
 		[SerializeField]
 		private GameObject _combatArmPresentation;
 
+		[Header("Audio")]
+		[SerializeField]
+		private AudioSource _dodgeSource;
+		[SerializeField]
+		private float _pitchMin;
+		[SerializeField]
+		private float _pitchMax;
+
 		/* --- UNITY METHODS --- */
 		void Awake() 
 		{
@@ -138,6 +146,9 @@ namespace Domination
 			Invoke("EndDodge", _dodgeDuration);
 			_dodgeDirection.Set(_x, 0f, _z);
 			
+			//Audio
+			_dodgeSource.Play();
+
 			//Representation - NOTE could be moved entirely to DominatorRepresentation script, outside of scope
 			_dominatorCombat.HideEquippedWeapon();
 			_dominatorPresentation.SetActive(false); //I'll be back.

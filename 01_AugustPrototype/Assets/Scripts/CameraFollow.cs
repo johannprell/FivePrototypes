@@ -28,9 +28,27 @@ namespace Domination
 		
 		void FixedUpdate () 
 		{
+			//Only follow for now, implement camera rotation in FollowAndRotate if wanted
+			Follow();
+		}
+
+		/* --- CUSTOM METHODS --- */
+
+		private void Follow()
+		{
+			//New target position is target position with offset
+			Vector3 targetCameraPosition = _target.position + _offset;
+			//Smoothly interpolate
+			transform.position = Vector3.Lerp(transform.position, targetCameraPosition, _smoothing * Time.deltaTime);
+			transform.rotation = Quaternion.Lerp(transform.rotation, _originalRotation, _smoothing * Time.deltaTime);
+		}
+
+		private void FollowAndRotate()
+		{
 			//New target position is target position with offset
 			Vector3 targetCameraPosition = _target.position + _offset;
 			
+
 			//Check for manual rotation, else lerp-follow
 			if(Input.GetKey(_rotateLeftKey))
 			{
@@ -47,7 +65,5 @@ namespace Domination
 				transform.rotation = Quaternion.Lerp(transform.rotation, _originalRotation, _smoothing * Time.deltaTime);
 			}
 		}
-
-		/* --- CUSTOM METHODS --- */
 	}
 }
