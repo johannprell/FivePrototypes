@@ -25,6 +25,8 @@ namespace Domination
 		[SerializeField]
 		private float _stepRate = 0.2f;
 		[SerializeField]
+		private float _stepRateDominanceModifier = 0.05f;
+		[SerializeField]
 		private bool _isAnimating;
 		private bool _isPantsFlipped;
 		
@@ -74,7 +76,7 @@ namespace Domination
 				FlipPants();
 				_particles.Emit(_particleEmission);
 				DominatorAudio.instance.PlayWalkSound();
-				yield return new WaitForSeconds(_stepRate);
+				yield return new WaitForSeconds(_stepRate - _stepRateDominanceModifier * DominationMeter.instance.CurrentValue);
 			}
 		}
 

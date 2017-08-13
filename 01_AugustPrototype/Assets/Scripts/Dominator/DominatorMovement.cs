@@ -14,6 +14,8 @@ namespace Domination
 		public DominatorMovementState MovementState = DominatorMovementState.Idle;
 		[SerializeField]
 		private float _speed = 5f;	    		//Movement speed
+		[SerializeField]
+		private float _dominanceSpeedModifier = 3f; //Speed buff as domination meter goes up
 		private Vector3 _movement;				//Movement direction
 		private bool _isMovementInput;  		//Check if any movement is triggered by player
 		private Rigidbody _body;				//Physics
@@ -163,7 +165,7 @@ namespace Domination
 
 		private void DodgeUpdate()
 		{
-			Vector3 dodgeMovement = _dodgeDirection.normalized * _dodgeSpeed * Time.deltaTime;
+			Vector3 dodgeMovement = _dodgeDirection.normalized * (_dodgeSpeed + _dominanceSpeedModifier * DominationMeter.instance.CurrentValue) * Time.deltaTime;
 			_body.MovePosition(transform.position + dodgeMovement);
 		}
 
@@ -192,7 +194,7 @@ namespace Domination
 		{
 			_movement.Set(x, 0f, z);
 			//Normalize vector, apply speed per second
-			_movement = _movement.normalized * _speed * Time.deltaTime;
+			_movement = _movement.normalized * (_speed + _dominanceSpeedModifier * DominationMeter.instance.CurrentValue) * Time.deltaTime;
 			//Move rigidbody
 			_body.MovePosition(transform.position + _movement);
 		}
