@@ -8,25 +8,18 @@ namespace Domination
 	{
 		/* --- MEMBER VARIABLES --- */
 		[SerializeField]
-		private Vector3 _hiddenPos;
-
-		public static ParticlesPool instance;
-
+		private GameObject _particleObj;
 		[SerializeField]
-		private GameObject _smallGunMuzzleObject;
+		private int _instancesInPool;
+		[SerializeField]
+		private int _currentIndex;
+
+		private List<PooledParticle> _pooledParticles;
 		
 		/* --- UNITY METHODS --- */
 		void Start() 
 		{
-			//Simpleton pattern
-			if(instance == null)
-			{
-				instance = this;
-			}
-			else
-			{
-				Destroy(this);
-			}
+			InitiatePool();
 		}
 		
 		void Update() 
@@ -35,19 +28,31 @@ namespace Domination
 		}
 
 		/* --- CUSTOM METHODS --- */
-		public void PlaceParticle(ParticleType type)
+		public void PlaceAndPlayParticle(Vector3 position, Quaternion rotation)
 		{
-
+			_pooledParticles[_currentIndex].PlaceAndPlay(position, rotation);
+			CycleIndex();
 		}
-	}
 
-	public enum ParticleType
-	{
-		SmallGunMuzzle,
-		SmallGunImpact,
-		BigGunMuzzle,
-		BigGunImpact,
-		HugeGunMuzzle,
-		HugeGunImpact
+		private void InitiatePool()
+		{
+			_pooledParticles = new List<PooledParticle>();
+			for (int i = 0; i < _instancesInPool; i++)
+			{
+				_pooledParticles.Add(Instantiate(_particleObj, transform.position, transform.rotation, transform).GetComponent<PooledParticle>());
+			}
+		}
+
+		private void CycleIndex()
+		{
+			if(_currentIndex == _pooledParticles.Count - 1)
+			{
+				_currentIndex = 0;
+			}
+			else
+			{
+				_currentIndex++;
+			}
+		}
 	}
 }

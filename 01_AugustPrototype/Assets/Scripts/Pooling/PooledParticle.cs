@@ -7,7 +7,6 @@ namespace Domination
 	public class PooledParticle : MonoBehaviour 
 	{
 		/* --- MEMBER VARIABLES --- */
-		public ParticleType Type;
 		private ParticleSystem _particles;
 		[SerializeField]
 		private float _autoResetAfter = 3f;

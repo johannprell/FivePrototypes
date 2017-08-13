@@ -34,11 +34,16 @@ namespace Domination
 		private DominatorCombat _dominatorCombat;
 		
 		[Header("Dodge")]
+		[SerializeField]
 		private KeyCode _dodgeButton = KeyCode.Mouse1;
 		[SerializeField]
 		private float _dodgeDuration = 0.6f;
 		[SerializeField]
 		private float _dodgeSpeed = 10f;
+		[SerializeField]
+		private float _dodgeCooldown = 1f;
+		[SerializeField]
+		private bool _canDodge;
 		private Vector3 _dodgeDirection;
 
 		[Header("Presentation")]
@@ -70,6 +75,7 @@ namespace Domination
 			}
 
 			_dodgingPresentation.SetActive(false);
+			_canDodge = true;
 		}
 		
 		void FixedUpdate() 
@@ -82,7 +88,7 @@ namespace Domination
 			switch(MovementState)
 			{
 				case DominatorMovementState.Idle:
-					if(CheckDodgeInput())
+					if(CheckDodgeInput() && _canDodge)
 					{
 						BeginDodge();
 						break;
@@ -95,7 +101,7 @@ namespace Domination
 					TurnToAim();
 					break;
 				case DominatorMovementState.Walk:
-					if(CheckDodgeInput())
+					if(CheckDodgeInput() && _canDodge)
 					{
 						BeginDodge();
 						break;
@@ -136,6 +142,8 @@ namespace Domination
 
 		private void BeginDodge()
 		{
+			_canDodge = false;
+
 			MovementState = DominatorMovementState.Dodge;
 			Invoke("EndDodge", _dodgeDuration);
 			_dodgeDirection.Set(_x, 0f, _z);
@@ -171,6 +179,13 @@ namespace Domination
 
 			//Anim
 			//_freeArmAnimCTL.SetBool("DoDodge", false);
+
+			Invoke("EndDodgeCooldown", _dodgeCooldown);
+		}
+
+		private void EndDodgeCooldown()
+		{
+			_canDodge = true;
 		}
 
 		private void Move(float x, float z)
