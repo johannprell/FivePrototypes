@@ -94,6 +94,8 @@ namespace Domination
 			//Set clips and volumes
 			_walkSource.clip = _walkClip;
 			_walkSource.volume = _walkVolume;
+			_dodgeSource.clip = _dodgeClip;
+			_dodgeSource.volume = _dodgeVolume;
 		}
 
 	}
