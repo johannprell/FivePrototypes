@@ -11,18 +11,21 @@ namespace Domination
 		private Vector3 _hiddenPos;
 
 		public static ParticlesPool instance;
+
+		[SerializeField]
+		private GameObject _smallGunMuzzleObject;
 		
 		/* --- UNITY METHODS --- */
 		void Start() 
 		{
-			//Simpleton
+			//Simpleton pattern
 			if(instance == null)
 			{
 				instance = this;
 			}
 			else
 			{
-				Destroy(gameObject);
+				Destroy(this);
 			}
 		}
 		

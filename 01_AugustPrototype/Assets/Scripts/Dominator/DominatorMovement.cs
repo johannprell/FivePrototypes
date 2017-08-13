@@ -48,14 +48,8 @@ namespace Domination
 		private GameObject _dodgingPresentation;
 		[SerializeField]
 		private GameObject _combatArmPresentation;
-
-		[Header("Audio")]
 		[SerializeField]
-		private AudioSource _dodgeSource;
-		[SerializeField]
-		private float _pitchMin;
-		[SerializeField]
-		private float _pitchMax;
+		private Animator _freeArmAnimCTL;
 
 		/* --- UNITY METHODS --- */
 		void Awake() 
@@ -147,7 +141,10 @@ namespace Domination
 			_dodgeDirection.Set(_x, 0f, _z);
 			
 			//Audio
-			_dodgeSource.Play();
+			DominatorAudio.instance.PlayDodgeSound();
+
+			//Anim
+			//_freeArmAnimCTL.SetBool("DoDodge", true);
 
 			//Representation - NOTE could be moved entirely to DominatorRepresentation script, outside of scope
 			_dominatorCombat.HideEquippedWeapon();
@@ -171,6 +168,9 @@ namespace Domination
 			_dominatorPresentation.SetActive(true); //I said I'll be back!
 			_combatArmPresentation.SetActive(true);
 			_dodgingPresentation.SetActive(false);
+
+			//Anim
+			//_freeArmAnimCTL.SetBool("DoDodge", false);
 		}
 
 		private void Move(float x, float z)

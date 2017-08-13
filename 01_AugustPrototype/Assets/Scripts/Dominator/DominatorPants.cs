@@ -27,26 +27,18 @@ namespace Domination
 		[SerializeField]
 		private bool _isAnimating;
 		private bool _isPantsFlipped;
-		[Header("Audio")]
-		[SerializeField]
-		private AudioClip _stepSound;
-		[SerializeField]
-		private AudioSource _stepSource;
-		[SerializeField]
-		private float _pitchMin;
-		[SerializeField]
-		private float _pitchMax;
-		[SerializeField]
-		[Range(0f, 1f)]
-		private float _stepVolume;
 		
 		/* --- UNITY METHODS --- */
 		void Start() 
 		{
 			_walkingPants.SetActive(false);
 			_standingPants.SetActive(true);
+			_isAnimating = false;
+		}
 
-			_stepSource.clip = _stepSound;
+		void OnEnable()
+		{
+			_particles.Emit(_particleEmission); //Parent object the one being disabled/enabled, so not working
 		}
 		
 		void Update() 
@@ -55,7 +47,6 @@ namespace Domination
 			{
 				_walkingPants.SetActive(true);
 				_standingPants.SetActive(false);
-				_isAnimating = true;
 				StartCoroutine(WalkRoutine());
 			}
 			else if(_movement.MovementState == DominatorMovementState.Idle && _isAnimating)
@@ -68,14 +59,21 @@ namespace Domination
 			}
 		}
 
+		private void OnDisable()
+		{
+			StopAllCoroutines();
+			_isAnimating = false;
+		}
+
 		/* --- CUSTOM METHODS --- */
 		private IEnumerator WalkRoutine()
 		{
+			_isAnimating = true;
 			while(_isAnimating)
 			{
 				FlipPants();
 				_particles.Emit(_particleEmission);
-				PlayAudio();
+				DominatorAudio.instance.PlayWalkSound();
 				yield return new WaitForSeconds(_stepRate);
 			}
 		}
@@ -84,12 +82,6 @@ namespace Domination
 		{
 			transform.localRotation = _isPantsFlipped ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.Euler(0f, 0f, 0f);
 			_isPantsFlipped = !_isPantsFlipped;
-		}
-
-		private void PlayAudio()
-		{
-			_stepSource.pitch = Random.Range(_pitchMin, _pitchMax);
-			_stepSource.Play();
 		}
 	}
 }
