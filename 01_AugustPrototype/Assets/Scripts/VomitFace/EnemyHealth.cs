@@ -11,10 +11,12 @@ namespace Domination
 		private float _maxHealth = 10f;
 		[SerializeField]
 		private float _currentHealth;
+		//Assign death presentation from spawner
+		public GameObject DeathPresentation;
 		[SerializeField]
-		private GameObject _deathPresentationPrefab;
+		private float _deathReward = 0.01f;
 		[SerializeField]
-		private float _deathPoints = 0.01f;
+		private float _deathRewardModifier = 0.008f;
 		
 		/* --- UNITY METHODS --- */
 		void Start() 
@@ -44,10 +46,11 @@ namespace Domination
 
 		private void Death()
 		{
+			float modifiedReward = _deathReward - _deathRewardModifier * DominationMeter.instance.CurrentValue;
 			//Raise domination meter
-			DominationMeter.instance.ApplyEnemyKill(_deathPoints);
+			DominationMeter.instance.ApplyEnemyKill(modifiedReward);
 			//I present to you: Death
-			Instantiate(_deathPresentationPrefab, transform.position, transform.rotation); //TODO pooling also this
+			Instantiate(DeathPresentation, transform.position, transform.rotation); //TODO pooling also this
 			//Done
 			Remove();
 		}

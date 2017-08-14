@@ -59,6 +59,11 @@ namespace Domination
 			}
 		}
 
+		void OnDisable()
+		{
+			_equippedWeapon.EndAttack();
+		}
+
 		/* --- CUSTOM METHODS --- */
 		public void HideEquippedWeapon()
 		{

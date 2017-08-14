@@ -47,6 +47,7 @@ namespace Domination
 		[SerializeField]
 		private bool _canDodge;
 		private Vector3 _dodgeDirection;
+		private CapsuleCollider _collider;
 
 		[Header("Presentation")]
 		[SerializeField]
@@ -63,6 +64,7 @@ namespace Domination
 		{
 			//Physics
 			_body = GetComponent<Rigidbody>();
+			_collider = GetComponent<CapsuleCollider>();
 
 			//Aiming & raycasting
 			_mainCamera = Camera.main;
@@ -120,6 +122,10 @@ namespace Domination
 					DodgeUpdate();
 					break;
 				case DominatorMovementState.Blocked:
+					if(_dominatorCombat.enabled)
+					{
+						_dominatorCombat.enabled = false;
+					}
 					break;
 				default:
 					break;
@@ -145,7 +151,7 @@ namespace Domination
 		private void BeginDodge()
 		{
 			_canDodge = false;
-
+			_collider.enabled = false; //safe while dodging!
 			MovementState = DominatorMovementState.Dodge;
 			Invoke("EndDodge", _dodgeDuration);
 			_dodgeDirection.Set(_x, 0f, _z);
@@ -172,6 +178,7 @@ namespace Domination
 		private void EndDodge()
 		{
 			MovementState = DominatorMovementState.Idle;
+			_collider.enabled = true;
 			
 			//Representation
 			_dominatorCombat.ShowEquippedWeapon();

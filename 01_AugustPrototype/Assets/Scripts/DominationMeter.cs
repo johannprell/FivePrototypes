@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.PostProcessing;
 
 namespace Domination
 {
@@ -34,11 +35,23 @@ namespace Domination
 		private KeyCode _plusKey = KeyCode.Period;
 		[SerializeField]
 		private KeyCode _minusKey = KeyCode.Comma;
-
+		[Header("Dominator")]
+		[SerializeField]
+		private DominatorMovement _dominatorMovement;
 		public static DominationMeter instance;
-		
+		[Header("Post Processing")]
+		[SerializeField]
+		private PostProcessingProfile _gameProfile;
+		[SerializeField]
+		private PostProcessingProfile _unworthyProfile;
+		[SerializeField]
+		private Camera _mainCamera;
+		[Header("Game outcome presentations")]
+		[SerializeField]
+		private GameObject _gameOverPresentation;
+
 		/* --- UNITY METHODS --- */
-		void Start() 
+		void Awake() 
 		{
 			//Simpleton
 			if(instance == null)
@@ -51,18 +64,24 @@ namespace Domination
 			}
 
 			ApplyValue(_startingValue);
+
+			_mainCamera = Camera.main;
+			_mainCamera.GetComponent<PostProcessingBehaviour>().profile = _gameProfile;
+
+			//Disable outcomes until needed
+			_gameOverPresentation.SetActive(false);
 		}
 		
 		void Update() 
 		{
 			#if UNITY_EDITOR
+			//No cheating in built version :)
 			EvaluateDebugInput();
 			#endif
 			
 			if(CurrentValue <= 0f)
 			{
 				ApplyState(DominationState.UNWORTHY);
-				TriggerGameOver();
 				return;
 			}
 			if(CurrentValue < _impressiveThreshold)
@@ -115,11 +134,28 @@ namespace Domination
 		{
 			State = state;
 			_stateText.text = State.ToString();
+			//Other feedback stuff
+			switch (state)
+			{
+				case DominationState.UNWORTHY:
+					TriggerGameOver();
+					break;
+				case DominationState.PUNY:
+					break;
+				case DominationState.IMPRESSIVE:
+					break;
+				case DominationState.DOMINANT:
+					break;
+				case DominationState.SOVEREIGN:
+					TriggerGameWin();
+					break;
+				default:
+					break;
+			}
 		}
 
 		private void ApplyValue(float value)
 		{
-			//TODO will need some logic here to make it interesting!
 			CurrentValue += value;
 			_meterUI.value = CurrentValue;
 		}
@@ -144,10 +180,22 @@ namespace Domination
 			ApplyValue(value);
 		}
 
+		public void ApplyDominatorHit(float value)
+		{
+			ApplyValue(-value);
+		}
+
 		private void TriggerGameOver()
 		{
 			//Trigger some stuff that happens at GameOverState
+			_dominatorMovement.MovementState = DominatorMovementState.Blocked;
+			_mainCamera.GetComponent<PostProcessingBehaviour>().profile = _unworthyProfile;
+			_gameOverPresentation.SetActive(true);
+		}
 
+		private void TriggerGameWin()
+		{
+			//Trigger stuff that happens when game is won
 		}
 	}
 

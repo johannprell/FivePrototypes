@@ -59,6 +59,10 @@ namespace Domination
 				_isAnimating = false;
 				StopAllCoroutines();
 			}
+			else if(_movement.MovementState == DominatorMovementState.Blocked)
+			{
+				StopAllCoroutines();
+			}
 		}
 
 		private void OnDisable()
