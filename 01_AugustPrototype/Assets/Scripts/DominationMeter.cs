@@ -49,6 +49,8 @@ namespace Domination
 		[Header("Game outcome presentations")]
 		[SerializeField]
 		private GameObject _gameOverPresentation;
+		[SerializeField]
+		private float _gameOverTimeScale = 0.33f;
 
 		/* --- UNITY METHODS --- */
 		void Awake() 
@@ -70,6 +72,8 @@ namespace Domination
 
 			//Disable outcomes until needed
 			_gameOverPresentation.SetActive(false);
+
+			Time.timeScale = 1f;
 		}
 		
 		void Update() 
@@ -191,6 +195,14 @@ namespace Domination
 			_dominatorMovement.MovementState = DominatorMovementState.Blocked;
 			_mainCamera.GetComponent<PostProcessingBehaviour>().profile = _unworthyProfile;
 			_gameOverPresentation.SetActive(true);
+			HideUI();
+			Time.timeScale = _gameOverTimeScale;
+		}
+
+		private void HideUI()
+		{
+			_meterUI.gameObject.SetActive(false);
+			_stateText.gameObject.SetActive(false);
 		}
 
 		private void TriggerGameWin()

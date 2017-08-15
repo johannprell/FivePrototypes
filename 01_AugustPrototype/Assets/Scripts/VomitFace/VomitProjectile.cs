@@ -34,9 +34,9 @@ namespace Domination
 				
 			}
 
-			private void OnCollisionEnter(Collision col)
+			private void OnTriggerEnter(Collider other)
 			{
-				switch(col.transform.tag)
+				switch(other.tag)
 				{
 					case "Player":
 						DominationMeter.instance.ApplyDominatorHit(_damage);
@@ -49,6 +49,22 @@ namespace Domination
 						break;
 				}
 			}
+
+			// private void OnCollisionEnter(Collision col)
+			// {
+			// 	switch(col.transform.tag)
+			// 	{
+			// 		case "Player":
+			// 			DominationMeter.instance.ApplyDominatorHit(_damage);
+			// 			Impact();
+			// 			break;
+			// 		case "Obstacle":
+			// 			Impact();
+			// 			break;
+			// 		default:
+			// 			break;
+			// 	}
+			// }
 
 			/* --- CUSTOM METHODS --- */
 			private void Launch()

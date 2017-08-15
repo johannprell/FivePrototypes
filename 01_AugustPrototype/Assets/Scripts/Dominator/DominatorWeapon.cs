@@ -38,9 +38,9 @@ namespace Domination
 		[SerializeField]
 		private float _pitchMax = 1.1f;
 
-		[Header("Muzzle Particles")]
-		[SerializeField]
-		private ParticlesPool _muzzlePool;
+		// [Header("Muzzle Particles")]
+		// [SerializeField]
+		// private ParticlesPool _muzzlePool;
 
 		//Generic hide solution for 1st prototype iteration
 		private List<MeshRenderer> _weapontRenderers;
@@ -109,7 +109,7 @@ namespace Domination
 			while(IsAttacking)
 			{
 				Instantiate(_projectilePrefab, _originPoint.position, _originPoint.rotation);
-				_muzzlePool.PlaceAndPlayParticle(_originPoint.position, _originPoint.rotation);
+				//_muzzlePool.PlaceAndPlayParticle(_originPoint.position, _originPoint.rotation);
 				PlayAudio();
 				yield return new WaitForSeconds(_autoRate);
 			}

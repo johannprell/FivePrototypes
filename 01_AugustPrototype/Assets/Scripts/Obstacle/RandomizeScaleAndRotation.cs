@@ -26,6 +26,8 @@ namespace Domination
 
 			float scale = Random.Range(_scaleMin, _scaleMax);
 			transform.localScale = new Vector3(scale, scale, scale);
+
+			transform.position = new Vector3(transform.position.x, 1 * scale, transform.position.z);
 		}
 		
 		void Update() 

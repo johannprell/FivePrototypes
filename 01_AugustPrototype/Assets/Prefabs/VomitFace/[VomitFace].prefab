@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4629163560175150}
   - component: {fileID: 33986708028462362}
   - component: {fileID: 23012404435881654}
+  - component: {fileID: 114089608153769812}
   m_Layer: 0
   m_Name: OriginPoint
   m_TagString: Untagged
@@ -89,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1710888532779058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 10}
+  m_LocalPosition: {x: 15, y: 0, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4573229293277626}
@@ -247,6 +248,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114089608153769812
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1222166665291902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7c5aae94ac841e9b67eeddf5342d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114376312697615394
 MonoBehaviour:
   m_ObjectHideFlags: 1
