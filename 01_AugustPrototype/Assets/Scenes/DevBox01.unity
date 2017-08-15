@@ -5596,6 +5596,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 418619649}
   _smoothing: 5
+  BaseSize: 12
+  SizeModifier: 8
   _rotateLeftKey: 113
   _rotateRightKey: 101
 --- !u!81 &1202386211
@@ -5662,7 +5664,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1202386209}
   m_LocalRotation: {x: 0.35437262, y: 0, z: 0, w: 0.93510437}
-  m_LocalPosition: {x: 0, y: 16, z: -16.45}
+  m_LocalPosition: {x: 0, y: 40, z: -43.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1213351423}
@@ -6394,6 +6396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 418619649}
   _smoothing: 5
+  BaseSize: 0
+  SizeModifier: 8
   _rotateLeftKey: 113
   _rotateRightKey: 101
 --- !u!1 &1499822582

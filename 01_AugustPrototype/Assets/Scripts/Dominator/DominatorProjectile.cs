@@ -81,7 +81,7 @@ namespace Domination
 					DominationMeter.instance.ApplyMissPunishment();
 					break;
 			}
-			Instantiate(_impactObject, transform.position, transform.rotation); //TODO le pooling
+			//Instantiate(_impactObject, transform.position, transform.rotation); //TODO le pooling
 			Remove();
 		}
 	}

@@ -52,6 +52,8 @@ namespace Domination
 		[SerializeField]
 		private float _gameOverTimeScale = 0.33f;
 
+		public event System.Action OnDominationChange;
+
 		/* --- UNITY METHODS --- */
 		void Awake() 
 		{
@@ -65,7 +67,7 @@ namespace Domination
 				Destroy(this);
 			}
 
-			ApplyValue(_startingValue);
+			CurrentValue = _startingValue;
 
 			_mainCamera = Camera.main;
 			_mainCamera.GetComponent<PostProcessingBehaviour>().profile = _gameProfile;
@@ -160,8 +162,16 @@ namespace Domination
 
 		private void ApplyValue(float value)
 		{
-			CurrentValue += value;
+			if(CurrentValue > 0f)
+			{
+				CurrentValue += value;
+			}
 			_meterUI.value = CurrentValue;
+
+			if(OnDominationChange != null)
+			{
+				OnDominationChange();
+			}
 		}
 
 		public void ApplyHitReward()

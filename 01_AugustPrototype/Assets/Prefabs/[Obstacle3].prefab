@@ -167,7 +167,7 @@ MonoBehaviour:
   _scaleMin: 0.6
   _scaleMax: 3
   _rotationMaxY: 180
-  _rotationMaxXZ: 10
+  _rotationMaxXZ: 5
 --- !u!208 &208574990410511624
 NavMeshObstacle:
   m_ObjectHideFlags: 1

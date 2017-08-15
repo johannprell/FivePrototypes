@@ -13,6 +13,13 @@ namespace Domination
 		private float _smoothing = 5f;		//Camera speed
 		private Vector3 _offset;			//Store initial offset from target
 		private Quaternion _originalRotation; //...and original rotation
+		[Header("Dynamic Size")]
+		[SerializeField]
+		private float BaseSize = 12f;
+		[SerializeField]
+		private float SizeModifier = 8f;
+		private float _dominationMemory;
+		private Camera _camera;
 		[Header("Rotate")]
 		[SerializeField]
 		private KeyCode _rotateLeftKey = KeyCode.Q;
@@ -24,8 +31,14 @@ namespace Domination
 		{
 			_offset = transform.position - _target.position;
 			_originalRotation = transform.rotation;
+			_camera = GetComponent<Camera>();
+			//Set up for automitic size update through event
+			DominationMeter.instance.OnDominationChange += UpdateSize;
+			//Manual update at start
+			_dominationMemory = 0f;
+			UpdateSize();
 		}
-		
+
 		void FixedUpdate () 
 		{
 			//Only follow for now, implement camera rotation in FollowAndRotate if wanted
@@ -33,6 +46,14 @@ namespace Domination
 		}
 
 		/* --- CUSTOM METHODS --- */
+		private void UpdateSize()
+		{
+			if(DominationMeter.instance.CurrentValue > _dominationMemory) //Only increase size
+			{
+				_dominationMemory = DominationMeter.instance.CurrentValue;
+				_camera.orthographicSize = BaseSize + SizeModifier * _dominationMemory;
+			}
+		}
 
 		private void Follow()
 		{
