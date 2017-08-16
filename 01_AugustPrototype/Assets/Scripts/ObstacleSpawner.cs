@@ -20,7 +20,7 @@ namespace Domination
 		public int ChanceOfSpawnMax = 75;
 		[Range(0, 100)]
 		public int ChanceOfSpawn = 0;
-		[Range(0f, 5f)]
+		[Range(0f, 8f)]
 		public float RandomizeOffsetRange = 2.5f;
 
 

@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6327d510fff41495ebf82babb99cfe32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scaleMin: 0.6
-  _scaleMax: 3
+  _scaleMin: 0.8
+  _scaleMax: 4
   _rotationMaxY: 180
   _rotationMaxXZ: 5
 --- !u!208 &208286540782378910

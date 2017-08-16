@@ -26,22 +26,6 @@ namespace Domination
 		public bool IsAttacking;
 		//NOTE everything reload related outside 1st prototype scope
 
-		[Header("Audio")]
-		[SerializeField]
-		private AudioSource _source;
-		[SerializeField]
-		private AudioClip _clip;
-		[SerializeField]
-		private float _volume = 0.8f;
-		[SerializeField]
-		private float _pitchMin = 0.9f;
-		[SerializeField]
-		private float _pitchMax = 1.1f;
-
-		// [Header("Muzzle Particles")]
-		// [SerializeField]
-		// private ParticlesPool _muzzlePool;
-
 		//Generic hide solution for 1st prototype iteration
 		private List<MeshRenderer> _weapontRenderers;
 		private bool _isHidden;
@@ -53,8 +37,6 @@ namespace Domination
 			_isHidden = true;
 			GetWeaponRenderersInChildren();
 			Hide();
-
-			InitiateAudio();
 		}
 		
 		void Update() 
@@ -89,14 +71,14 @@ namespace Domination
 		{
 			IsAttacking = false;
 			_isHidden = true;
-			SetWeaponRenderingState(false);
+			//SetWeaponRenderingState(false);
 			StopAllCoroutines();
 		}
 
 		public void Show()
 		{
 			_isHidden = false;
-			SetWeaponRenderingState(true);
+			//SetWeaponRenderingState(true);
 		}
 
 		private void ResetManualCooldown()
@@ -109,8 +91,7 @@ namespace Domination
 			while(IsAttacking)
 			{
 				Instantiate(_projectilePrefab, _originPoint.position, _originPoint.rotation);
-				//_muzzlePool.PlaceAndPlayParticle(_originPoint.position, _originPoint.rotation);
-				PlayAudio();
+				AudioOneShotPool.instance.PlayGunOneShot();
 				yield return new WaitForSeconds(_autoRate);
 			}
 			ResetManualCooldown();
@@ -136,24 +117,6 @@ namespace Domination
 			{
 				renderer.enabled = isEnabled;
 			}
-		}
-
-		private void InitiateAudio()
-		{
-			if(!_source)
-			{
-				_source = GetComponent<AudioSource>();
-			}
-			_source.clip = _clip;
-			_source.volume = _volume;
-			_source.playOnAwake = false;
-			_source.loop = false;
-		}
-
-		private void PlayAudio()
-		{
-			_source.pitch = Random.Range(_pitchMin, _pitchMax);
-			_source.Play();
 		}
 	}
 }
