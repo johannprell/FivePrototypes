@@ -12,6 +12,7 @@ namespace Domination
 		public float RestartDelay = 1f;
 		public bool CanRestart = false;
 		public Canvas GameOverCanvas;
+		public AudioSource Music;
 		
 		/* --- UNITY METHODS --- */
 		void Start() 
@@ -37,6 +38,7 @@ namespace Domination
 		{
 			CanRestart = true;
 			GameOverCanvas.enabled = true;
+			Music.Play();
 		}
 	}
 }
