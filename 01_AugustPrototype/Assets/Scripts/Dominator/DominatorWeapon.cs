@@ -28,14 +28,18 @@ namespace Domination
 
 		//Generic hide solution for 1st prototype iteration
 		private List<MeshRenderer> _weapontRenderers;
-		private bool _isHidden;
+		public bool IsHidden;
 		
 		/* --- UNITY METHODS --- */
+		void Awake()
+		{
+			GetWeaponRenderersInChildren();
+		}
+
 		void Start() 
 		{
 			_canStartAttack = true;
-			_isHidden = true;
-			GetWeaponRenderersInChildren();
+			IsHidden = true;
 			Hide();
 		}
 		
@@ -47,7 +51,7 @@ namespace Domination
 		/* --- CUSTOM METHODS --- */
 		public void BeginAttack()
 		{
-			if(_isHidden)
+			if(IsHidden)
 			{
 				Show();
 			}
@@ -70,15 +74,15 @@ namespace Domination
 		public void Hide()
 		{
 			IsAttacking = false;
-			_isHidden = true;
-			//SetWeaponRenderingState(false);
+			IsHidden = true;
+			SetWeaponRenderingState(false);
 			StopAllCoroutines();
 		}
 
 		public void Show()
 		{
-			_isHidden = false;
-			//SetWeaponRenderingState(true);
+			IsHidden = false;
+			SetWeaponRenderingState(true);
 		}
 
 		private void ResetManualCooldown()

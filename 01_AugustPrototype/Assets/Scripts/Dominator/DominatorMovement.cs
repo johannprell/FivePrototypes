@@ -82,6 +82,14 @@ namespace Domination
 			_canDodge = true;
 		}
 		
+		void Update()
+		{
+			if(MovementState != DominatorMovementState.Dodge && _dominatorCombat.EquippedWeaponHidden())
+			{
+				_dominatorCombat.ShowEquippedWeapon();
+			}
+		}
+
 		void FixedUpdate() 
 		{
 			//Get input

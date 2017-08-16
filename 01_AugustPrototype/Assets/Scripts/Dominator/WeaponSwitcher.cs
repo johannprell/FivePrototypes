@@ -14,6 +14,8 @@ namespace Domination
 		public GameObject BigGunObj;
 		public GameObject HugeGunObj;
 		private Dictionary<WeaponType, GameObject> _weapons;
+		[Header("Combar script")]
+		public DominatorCombat CombatScript;
 	
 		private DominationMeter _dominationMeter;
 		
@@ -86,6 +88,8 @@ namespace Domination
 			}
 			//Switch one shot audio clip
 			AudioOneShotPool.instance.LoadGunClip(type);
+			//Equip to combat script
+			CombatScript.EquipWeapon(_weapons[type].GetComponent<DominatorWeapon>());
 		}
 	}
 }

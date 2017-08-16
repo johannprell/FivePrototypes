@@ -74,5 +74,15 @@ namespace Domination
 		{
 			_equippedWeapon.Show();
 		}
+
+		public bool EquippedWeaponHidden()
+		{
+			return _equippedWeapon.IsHidden;
+		}
+
+		public void EquipWeapon(DominatorWeapon weapon)
+		{
+			_equippedWeapon = weapon;
+		}
 	}
 }
