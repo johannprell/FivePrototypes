@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.PostProcessing;
+using UnityEngine.SceneManagement;
 
 namespace Domination
 {
@@ -45,14 +46,22 @@ namespace Domination
 		[SerializeField]
 		private PostProcessingProfile _unworthyProfile;
 		[SerializeField]
+		private PostProcessingProfile _winProfile;
+		[SerializeField]
 		private Camera _mainCamera;
 		[Header("Game outcome presentations")]
 		[SerializeField]
 		private GameObject _gameOverPresentation;
 		[SerializeField]
 		private float _gameOverTimeScale = 0.33f;
+		[SerializeField]
+		private GameObject _winPresentation;
+		[Header("Cheat?")]
+		[SerializeField]
+		private bool _isCheatingBuild;
 
 		public event System.Action OnDominationChange;
+		public event System.Action<DominationState> OnDominationStateChange;
 
 		/* --- UNITY METHODS --- */
 		void Awake() 
@@ -74,6 +83,7 @@ namespace Domination
 
 			//Disable outcomes until needed
 			_gameOverPresentation.SetActive(false);
+			_winPresentation.SetActive(false);
 
 			Time.timeScale = 1f;
 		}
@@ -83,6 +93,12 @@ namespace Domination
 			#if UNITY_EDITOR
 			//No cheating in built version :)
 			EvaluateDebugInput();
+			#endif
+			#if UNITY_STANDALONE
+			if(_isCheatingBuild)
+			{
+				EvaluateDebugInput();
+			}
 			#endif
 			
 			if(CurrentValue <= 0f)
@@ -158,6 +174,11 @@ namespace Domination
 				default:
 					break;
 			}
+			//Broadcast state change through event
+			if(OnDominationStateChange != null)
+			{
+				OnDominationStateChange(state);
+			}
 		}
 
 		private void ApplyValue(float value)
@@ -217,7 +238,9 @@ namespace Domination
 
 		private void TriggerGameWin()
 		{
-			//Trigger stuff that happens when game is won
+			//_winPresentation.SetActive(true);
+			//_mainCamera.GetComponent<PostProcessingBehaviour>().profile = _winProfile;
+			SceneManager.LoadScene(0);
 		}
 	}
 

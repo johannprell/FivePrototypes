@@ -29,4 +29,9 @@ public class VomitFaceMovement : MonoBehaviour
 	}
 
 	/* --- CUSTOM METHODS --- */
+	public void StopMoving()
+	{
+		_nav.SetDestination(transform.position);
+		_nav.speed = 0f;
+	}
 }

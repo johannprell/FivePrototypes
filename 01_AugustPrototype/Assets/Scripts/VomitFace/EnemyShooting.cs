@@ -103,5 +103,10 @@ namespace Domination
 		{
 			_canShoot = true;
 		}
+
+		public void StopShooting()
+		{
+			StopAllCoroutines();
+		}
 	}
 }

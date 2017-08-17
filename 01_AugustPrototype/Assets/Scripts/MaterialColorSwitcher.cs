@@ -39,7 +39,7 @@ namespace Domination
 
 		public void Iterate()
 		{
-			if(_currentIteration < _colors.Count)
+			if(_currentIteration < _colors.Count - 1)
 			{
 				_currentIteration++;
 			}

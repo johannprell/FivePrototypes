@@ -16,6 +16,7 @@ namespace Domination
 		void Start() 
 		{
 			StartCoroutine(KeepEmComingRoutine());
+			DominationMeter.instance.OnDominationStateChange += ReceiveDominationStateChange;
 		}
 		
 		void Update() 
@@ -28,10 +29,23 @@ namespace Domination
 		{
 			while(DominationMeter.instance.CurrentValue > 0f)
 			{
-				var monster = Instantiate(Monster, transform.position, transform.rotation);
+				var monster = Instantiate(Monster, transform.position, transform.rotation, transform);
 				monster.GetComponent<EnemyHealth>().DeathPresentation = DeathPresentationOriginal;
 				yield return new WaitForSeconds(Interval - (IntervalModifier * DominationMeter.instance.CurrentValue));
 			}
+		}
+
+		private void ReceiveDominationStateChange(DominationState state)
+		{
+			if(state == DominationState.SOVEREIGN)
+			{
+				StopItNow();
+			}
+		}
+
+		private void StopItNow()
+		{
+			StopAllCoroutines();
 		}
 	}
 }

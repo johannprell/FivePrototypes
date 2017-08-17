@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Domination
 {
@@ -17,6 +18,10 @@ namespace Domination
 		private float _deathReward = 0.01f;
 		[SerializeField]
 		private float _deathRewardModifier = 0.008f;
+		//References for becoming docile when player wins
+		private EnemyShooting _shooting;
+		private VomitFaceMovement _movement;
+		private CapsuleCollider _collider;
 		
 		/* --- UNITY METHODS --- */
 		void Start() 
@@ -33,6 +38,11 @@ namespace Domination
 		public void Initiate()
 		{
 			_currentHealth = _maxHealth;
+			_shooting = GetComponent<EnemyShooting>();
+			_movement = GetComponent<VomitFaceMovement>();
+			_collider = GetComponent<CapsuleCollider>();
+
+			DominationMeter.instance.OnDominationStateChange += ReceiveDominationStateChange;
 		}
 
 		public void DealDamage(float amount)
@@ -58,6 +68,23 @@ namespace Domination
 		private void Remove()
 		{
 			Destroy(gameObject); //TODO pooling
+		}
+
+		private void ReceiveDominationStateChange(DominationState state)
+		{
+			if(state == DominationState.SOVEREIGN)
+			{
+				BecomeDocileOnPlayerWin();
+			}
+		}
+
+		private void BecomeDocileOnPlayerWin()
+		{
+			_movement.StopMoving();
+			_movement.enabled = false;
+			_shooting.StopShooting();
+			_shooting.enabled = false;
+			//_collider.enabled = false; //Probably not needed
 		}
 	}
 }
