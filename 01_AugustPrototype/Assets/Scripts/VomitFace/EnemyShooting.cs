@@ -94,7 +94,8 @@ namespace Domination
 
 		private void Shoot()
 		{
-			Instantiate(BulletPrefab, OriginPoint.position, OriginPoint.rotation);
+			VomitProjectilePool.instance.LaunchProjectile(OriginPoint.position, OriginPoint.rotation);
+			//Instantiate(BulletPrefab, OriginPoint.position, OriginPoint.rotation);
 			_canShoot = false;
 			Invoke("StopShootingCooldown", ShootInterval - _intervalDominationModifer * DominationMeter.instance.CurrentValue);
 		}

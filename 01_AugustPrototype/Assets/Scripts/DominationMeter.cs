@@ -238,9 +238,11 @@ namespace Domination
 
 		private void TriggerGameWin()
 		{
+			//OPTION 1: trigger stuff in scene
 			//_winPresentation.SetActive(true);
 			//_mainCamera.GetComponent<PostProcessingBehaviour>().profile = _winProfile;
-			SceneManager.LoadScene(0);
+			//OPTION 2: go to different scene on win
+			//SceneManager.LoadScene(0);
 		}
 	}
 
