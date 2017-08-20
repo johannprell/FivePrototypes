@@ -48,6 +48,7 @@ namespace Domination
 		public void DealDamage(float amount)
 		{
 			_currentHealth -= amount;
+			DominationMeter.instance.ApplyHitReward();
 			if(_currentHealth <= 0f)
 			{
 				Death();

@@ -55,7 +55,7 @@ namespace Domination
 		/* --- CUSTOM METHODS --- */
 		private void Launch()
 		{
-			float updatedForce = _force; //TODO adjust to Domination meter value
+			float updatedForce = _force;
 			_body.AddForce(transform.forward * updatedForce, ForceMode.Impulse);
 		} 
 
@@ -67,21 +67,15 @@ namespace Domination
 
 		private void Remove()
 		{
-			Destroy(gameObject); //TODO pooling
+			Destroy(gameObject);
 		}
 
 		private void Impact()
 		{
-			switch(_enemyHit) //TODO domination meter logic
+			if(!_enemyHit)
 			{
-				case true:
-					DominationMeter.instance.ApplyHitReward();
-					break;
-				case false:
-					DominationMeter.instance.ApplyMissPunishment();
-					break;
+				DominationMeter.instance.ApplyMissPunishment();
 			}
-			//Instantiate(_impactObject, transform.position, transform.rotation); //TODO le pooling
 			Remove();
 		}
 	}

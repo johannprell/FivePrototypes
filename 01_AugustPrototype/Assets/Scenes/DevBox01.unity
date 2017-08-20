@@ -9115,7 +9115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1167429068
 Transform:
   m_ObjectHideFlags: 0
@@ -9333,7 +9333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: bd895438d043d4eba8f1cedc9597b700, type: 2}
+  profile: {fileID: 11400000, guid: 64e6ce28331ca43e0bce50721d93fdd2, type: 2}
 --- !u!1 &1213351422
 GameObject:
   m_ObjectHideFlags: 0
@@ -9860,12 +9860,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147834a19071747169cab3a0ff566e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 1170109203801154, guid: f61df2d9a8e884027b08bf5812ca868c,
+  _projectilePrefab: {fileID: 1458770953262842, guid: 36f511f8fbd794535b14e6bb6faa0cf1,
     type: 2}
-  _autoRate: 0.5
-  _manualRate: 0.25
+  _autoRate: 0.6
+  _manualRate: 0.6
   _originPoint: {fileID: 2070235561}
-  _canStartAttack: 0
+  _canStartAttack: 1
   IsAttacking: 0
   IsHidden: 0
 --- !u!1 &1371911663
@@ -10484,7 +10484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147834a19071747169cab3a0ff566e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectilePrefab: {fileID: 1545301291015334, guid: 7083ef117fdf0414185615c6fd49b2df,
+  _projectilePrefab: {fileID: 1458770953262842, guid: 36f511f8fbd794535b14e6bb6faa0cf1,
     type: 2}
   _autoRate: 0.5
   _manualRate: 0.25
