@@ -10575,6 +10575,13 @@ MonoBehaviour:
   _lineOrigin: {fileID: 315258951}
   Origin: {x: 0, y: 0, z: 0}
   AimPoint: {x: 0, y: 0, z: 0}
+  _sightWidth: 0.1
+  _sightColor: {r: 1, g: 0, b: 1, a: 0}
+  _rayWidth: 0.7
+  _rayStartColor: {r: 1, g: 0, b: 1, a: 0}
+  _rayEndColor: {r: 1, g: 1, b: 1, a: 0}
+  _duration: 0.1
+  _weapon: {fileID: 1503173421}
 --- !u!114 &1503173421
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +30,9 @@ namespace Domination
 		//Generic hide solution for 1st prototype iteration
 		private List<MeshRenderer> _weapontRenderers;
 		public bool IsHidden;
+
+		//Event for attaching other logic to shooting
+		public event Action OnShoot;
 		
 		/* --- UNITY METHODS --- */
 		void Awake()
@@ -96,6 +100,10 @@ namespace Domination
 			{
 				Instantiate(_projectilePrefab, _originPoint.position, _originPoint.rotation);
 				AudioOneShotPool.instance.PlayGunOneShot();
+				if(OnShoot != null)
+				{
+					OnShoot();
+				}
 				yield return new WaitForSeconds(_autoRate);
 			}
 			ResetManualCooldown();
