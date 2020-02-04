@@ -1,9 +1,9 @@
 # Prototype 01: August 2017 #
 
-I'm cheating and starting early on this one - setting up repo and project on Monday July 24th 20017.
+![Logo](img/Logo.png)
 
 ## Dev Environment ##
-Unity 3D 2017.1
+Unity 3D 2017.1 - upgraded project to 2019.2 in Jan 2020
 C#
 
 # GDD #
@@ -34,6 +34,9 @@ Player dies when meter is empty. Player wins if meter is filled to max. While me
 ## Core design questions ##
 - Can I turn the typical life/score meter into a mechanic that impacts all aspects of gameplay?
 - Is it fun if a bullet hellish shooter punishes wasting shots and missing, while rewarding precision?
+
+![Gameplay](img/Gameplay.png)
+![GameOVer](img/GameOver.png)
 
 
  
