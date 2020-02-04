@@ -24,8 +24,7 @@ Top-down orthographic 3D - assets made in MagicaVoxel.
 Guns, guitars and synths.
 
 ## Core mechanics & features ##
-- *Domination meter*: inspired by the Internalisation meter on the *IdleThumbs* twitch. Goes up whenever player hits something, goes down whenever player misses.
-Player dies when meter is empty. Player wins if meter is filled to max. While meter is filling, simple upgrades might be unlocked, or weapons just get stronger. Music has at least two stems that are mixed according to Domination meter.
+- *Domination meter*: inspired by the Internalisation meter on the *IdleThumbs* twitch. Goes up whenever player hits something, goes down whenever player misses. Player dies when meter is empty. Player wins if meter is filled to max. While meter is filling, simple upgrades might be unlocked, or weapons just get stronger. Music has at least two stems that are mixed according to Domination meter.
 - *Player*: WASD movement, mouse aim and fire. 
 - *Enemies*: super dumb zombie enemies that follow player - Unity NavMesh based "AI". Shoot/puke/something at player. Get faster as domination meter rises.
 - *Environment*: simplest possible procedural level, obstacles are placed in otherwise very open wasteland. Enemy spawn points, spawn rate increases with Domination meter.
@@ -35,9 +34,7 @@ Player dies when meter is empty. Player wins if meter is filled to max. While me
 - Can I turn the typical life/score meter into a mechanic that impacts all aspects of gameplay?
 - Is it fun if a bullet hellish shooter punishes wasting shots and missing, while rewarding precision?
 
-![Gameplay](img/Gameplay.png)
+![Gameplay01](img/Gameplay01.png)
+![Puny](img/Puny.png)
 ![GameOVer](img/GameOver.png)
-
-
- 
-
+![Gameplay02](img/Gameplay02.png)
